@@ -38,6 +38,11 @@ Go To Login Page
 Register Page Should Be Open
     Title Should Be  Register
 
+Welcome Page Should Be Open
+    Title Should Be  Welcome
+
 Go To Starting Page
     Go To  ${HOME_URL}
 
+Go To Register Page
+    Go To  ${REGISTER_URL}
