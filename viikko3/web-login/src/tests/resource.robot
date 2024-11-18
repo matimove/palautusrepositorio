@@ -39,7 +39,7 @@ Register Page Should Be Open
     Title Should Be  Register
 
 Welcome Page Should Be Open
-    Title Should Be  Welcome
+    Title Should Be  Welcome to Ohtu Application!
 
 Go To Starting Page
     Go To  ${HOME_URL}

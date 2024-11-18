@@ -30,8 +30,8 @@ Register With Valid Username And Too Short Password
 
 Register With Valid Username And Invalid Password
     Set Username  tommi2
-    Set Password  tommitommi123
-    Confirm Password  tommitommi123
+    Set Password  tommitommitommi
+    Confirm Password  tommitommitommi
     Submit Registration
     Registration Should Fail With Message  Password must contain atleast one non letter character
 
@@ -44,7 +44,7 @@ Register With Nonmatching Password And Password Confirmation
 
 
 Register With Username That Is Already In Use
-    Set Username  tommi
+    Set Username  kalle
     Set Password  tommi123?
     Confirm Password  tommi123?
     Submit Registration
@@ -80,8 +80,13 @@ Confirm Password
 Submit Registration
     Click Button  Register
 
+Registration Should Fail With Message
+    [Arguments]  ${message}
+    Register Page Should Be Open
+    Page Should Contain  ${message}
+
 *** Keywords ***
 Reset Application Create User And Go To Register Page
     Reset Application
     Create User  kalle  kalle123
-    Go To Login Page
+    Go To Register Page
