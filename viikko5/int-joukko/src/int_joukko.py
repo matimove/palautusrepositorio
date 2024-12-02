@@ -8,48 +8,40 @@ class IntJoukko:
         return [0] * koko
     
     def __init__(self, kapasiteetti=None, kasvatuskoko=None):
-        if kapasiteetti is None:
+        if not kapasiteetti:
             self.kapasiteetti = KAPASITEETTI
+
         elif not isinstance(kapasiteetti, int) or kapasiteetti < 0:
-            raise Exception("Väärä kapasiteetti")  # heitin vaan jotain :D
+            raise Exception("Väärä kapasiteetti")  
         else:
             self.kapasiteetti = kapasiteetti
 
-        if kasvatuskoko is None:
+        if not kasvatuskoko:
             self.kasvatuskoko = OLETUSKASVATUS
         elif not isinstance(kapasiteetti, int) or kapasiteetti < 0:
-            raise Exception("kapasiteetti2")  # heitin vaan jotain :D
+            raise Exception("kapasiteetti2")  
         else:
             self.kasvatuskoko = kasvatuskoko
 
-        self.ljono = self._luo_lista(self.kapasiteetti)
+        self.lukujono = self._luo_lista(self.kapasiteetti)
 
         self.alkioiden_lkm = 0
 
-    def kuuluu(self, n):
-        on = 0
+    def kuuluu(self, numero):
+        return numero in self.lukujono
 
-        for i in range(0, self.alkioiden_lkm):
-            if n == self.ljono[i]:
-                on = on + 1
-
-        if on > 0:
-            return True
-        else:
-            return False
-
-    def lisaa(self, n):
+    def lisaa(self, numero):
         ei_ole = 0
 
         if self.alkioiden_lkm == 0:
-            self.ljono[0] = n
+            self.lukujono.append(numero)
             self.alkioiden_lkm = self.alkioiden_lkm + 1
             return True
         else:
             pass
 
-        if not self.kuuluu(n):
-            self.ljono[self.alkioiden_lkm] = n
+        if not self.kuuluu(numero):
+            self.ljono[self.alkioiden_lkm] = numero
             self.alkioiden_lkm = self.alkioiden_lkm + 1
 
             # ei mahdu enempää, luodaan uusi säilytyspaikka luvuille
